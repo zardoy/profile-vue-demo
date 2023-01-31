@@ -1,0 +1,107 @@
+@tailwind components;
+
+@tailwind utilities;
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.personal-info-form,
+.change-password-form {
+    width: 300px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-container {
+    position: relative;
+    --avatar-size: 150px;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    &:hover .avatar-remove-action-container,
+    &:hover .avatar-container--avatar-edit {
+        opacity: 1;
+    }
+}
+
+.avatar-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+}
+
+.avatar-remove-action-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-container--avatar-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        cursor: pointer;
+        --button-size: 30px;
+        width: var(--button-size);
+        height: var(--button-size);
+        fill: white;
+    }
+}
+
+.avatar-remove-action-container,
+.avatar-container--avatar-edit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+
+.avatar-remove-action-container {
+    transition: opacity 100ms;
+    --bg-opacity: 0.5;
+    background-color: rgb(0, 0, 0, var(--bg-opacity));
+    clip-path: polygon(0% 70%, 0% 100%, 100% 100%, 100% 70%);
+    &:hover {
+        --bg-opacity: 0.6;
+    }
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-action {
+    position: absolute;
+    z-index: 100;
+    --button-size: 30px;
+    bottom: calc(var(--avatar-size) / 4 - var(--button-size));
+    cursor: pointer;
+    svg {
+        width: var(--button-size);
+        height: var(--button-size);
+        // font-size: 1.25rem;
+        fill: currentColor;
+        color: white;
+    }
+}
