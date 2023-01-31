@@ -27,5 +27,6 @@
     "arrowParens": "avoid",
     "printWidth": 160,
     "endOfLine": "auto"
-  }
+  },
+  "license": "MIT"
 }
