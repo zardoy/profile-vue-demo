@@ -2,8 +2,9 @@
 import { Form } from 'vee-validate'
 import { ref } from 'vue'
 import Input from './Input.vue'
+import { spokenLanguages } from '../staticData'
 
-const selectedLanguages = ref<string[]>([])
+const selectedSpokenLanguages = ref<string[]>([])
 
 const validationSchema = {
     fullName(value: string | undefined) {
@@ -60,12 +61,12 @@ const validationSchema = {
 }
 
 const changeSelect = ev => {
-    selectedLanguages.value.push([...ev.target.options].find(o => o.value === ev.target.value).textContent)
+    selectedSpokenLanguages.value.push([...ev.target.options].find(o => o.value === ev.target.value).textContent)
     ev.target.value = ''
 }
 
 const removeSelectedItem = value => {
-    selectedLanguages.value.splice(selectedLanguages.value.indexOf(value), 1)
+    selectedSpokenLanguages.value.splice(selectedSpokenLanguages.value.indexOf(value), 1)
 }
 
 const submit = values => {
@@ -162,16 +163,12 @@ const phoneNumberInputChange = (ev: Event) => {
                 <select class="personal-info-form--select-langs" @change="changeSelect">
                     <!-- a few languages with short codes -->
                     <option value="" disabled selected>Not selected</option>
-                    <option value="ru">Russian</option>
-                    <option value="en">English</option>
-                    <option value="de">German</option>
-                    <option value="fr">French</option>
-                    <option value="es">Spanish</option>
+                    <option v-for="[code, name] of spokenLanguages" :value="code" :disabled="selectedSpokenLanguages.includes(name)">{{ name }}</option>
                 </select>
             </template>
         </Input>
         <div class="personal-info-form-spoken-languages--container">
-            <div v-for="lang in selectedLanguages">
+            <div v-for="lang in selectedSpokenLanguages">
                 <svg viewBox="0 0 24 24" class="personal-info-form-spoken-languages--delete" @click="removeSelectedItem(lang)">
                     <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
                 </svg>
