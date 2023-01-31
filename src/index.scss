@@ -43,6 +43,8 @@
     top: 0;
     left: 0;
     border-radius: 50%;
+    object-fit: cover;
+    background-color: #f2f5f7;
     width: var(--avatar-size);
     height: var(--avatar-size);
 }

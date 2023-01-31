@@ -23,9 +23,9 @@ const fileSelected = () => {
 }
 </script>
 <template>
-    <input type="file" accept="image/*" hidden ref="avatarInput" @change="fileSelected" />
+    <input type="file" accept="image/*" title="" hidden ref="avatarInput" @change="fileSelected" />
     <div class="avatar-container">
-        <img :src="avatarUrl" class="avatar-image" />
+        <img :src="avatarUrl" class="avatar-image" alt="User Avatar" />
         <div class="avatar-remove-action-container">
             <div class="avatar-action">
                 <!-- remove icon -->
