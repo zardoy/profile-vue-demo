@@ -35,5 +35,6 @@ const submit = values => {
         <Input type="password" label="Current password" name="currentPassword" />
         <Input type="password" label="New password" name="newPassword" />
         <Input type="password" label="Repeat password" name="repeatPassword" />
+        <SubmitButton>Change password</SubmitButton>
     </Form>
 </template>

@@ -3,6 +3,7 @@ import { Form } from 'vee-validate'
 import { ref } from 'vue'
 import Input from './Input.vue'
 import { spokenLanguages } from '../staticData'
+import SubmitButton from './SubmitButton.vue'
 
 const selectedSpokenLanguages = ref<string[]>([])
 
@@ -175,6 +176,7 @@ const phoneNumberInputChange = (ev: Event) => {
                 <span>{{ lang }}</span>
             </div>
         </div>
+        <SubmitButton>Update info</SubmitButton>
     </Form>
 </template>
 <style scoped lang="scss">
@@ -183,10 +185,12 @@ const phoneNumberInputChange = (ev: Event) => {
 }
 .personal-info-form--select-langs {
     width: 100%;
+    height: 2rem;
     border-radius: 5px;
 }
 .personal-info-form-spoken-languages--container {
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
     margin-top: 5px;
     & > div {

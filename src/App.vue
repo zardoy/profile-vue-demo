@@ -3,5 +3,5 @@ import Profile from './Profile.vue'
 </script>
 
 <template>
-  <Profile />
+    <Profile />
 </template>
