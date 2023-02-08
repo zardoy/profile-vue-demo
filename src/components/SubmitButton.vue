@@ -2,9 +2,9 @@
 <template>
     <button><slot /></button>
 </template>
-<style>
+<style lang="scss">
 button {
-    margin-top: 5px;
+    margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -13,5 +13,9 @@ button {
     font-size: 1.1rem;
     width: 100%;
     cursor: pointer;
+
+    &:hover {
+        background-color: #0f6ed5;
+    }
 }
 </style>

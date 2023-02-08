@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Form } from 'vee-validate'
 import Input from './Input.vue'
+import SubmitButton from './SubmitButton.vue'
 
 const validationSchema = {
     newPassword(value) {
