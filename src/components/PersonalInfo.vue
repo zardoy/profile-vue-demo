@@ -53,7 +53,7 @@ const validationSchema = {
     phone(value: string | undefined) {
         if (!value) return true
         // validate phone number with regex
-        if (!value.match(/^\d{3,}$/)) {
+        if (!value.match(/^\d{3}-\d{3}-\d{2}-\d{2}$/)) {
             return 'Phone number is invalid'
         }
 
@@ -83,10 +83,16 @@ const onlyNumbersKeydownHandler = (ev: KeyboardEvent) => {
     }
 }
 
+const valueWasEmpty = ref(true)
+
 const phoneNumberInputChange = (ev: Event) => {
     const target = ev.target as HTMLInputElement
     // input event bubbles
-    if (target !== ev.currentTarget || !target.value) return
+    if (target !== ev.currentTarget) return
+    if (!target.value) {
+        valueWasEmpty.value = true
+        return
+    }
     let newValue = '___-___-__-__'
     for (const char of target.value) {
         if (char.match(/\d/)) {
@@ -102,10 +108,12 @@ const phoneNumberInputChange = (ev: Event) => {
     // change input value but preserve cursor position
     const cursorPosition = target.selectionStart ?? 0
     setTimeout(() => {
+        console.log(newValue)
         target.value = newValue
         const newPos = cursorPosition + offset
         target.setSelectionRange(newPos, newPos)
-    }, 0)
+        valueWasEmpty.value = false
+    }, valueWasEmpty.value ? 50 : 0)
 }
 </script>
 <template>

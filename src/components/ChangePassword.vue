@@ -33,9 +33,9 @@ const submit = values => {
 <template>
     <Form :validationSchema="validationSchema" @submit="submit" class="change-password-form">
         <h2>Change Password</h2>
-        <Input type="password" label="Current password" name="currentPassword" />
-        <Input type="password" label="New password" name="newPassword" />
-        <Input type="password" label="Repeat password" name="repeatPassword" />
+        <Input autocomplete="current-password" type="password" label="Current password" name="currentPassword" />
+        <Input autocomplete="new-password" type="password" label="New password" name="newPassword" />
+        <Input autocomplete="new-password" type="password" label="Repeat password" name="repeatPassword" />
         <SubmitButton>Change password</SubmitButton>
     </Form>
 </template>
